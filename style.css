@@ -32,8 +32,8 @@ h1 {
 
 .controls {
   display: flex;
-  flex-direction: column;
   gap: 10px;
+  flex-direction: column;
   margin-bottom: 20px;
 }
 
@@ -55,6 +55,10 @@ button {
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 button:hover {
@@ -64,41 +68,53 @@ button:hover {
 ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px 0;
+  margin-bottom: 25px;
 }
 
-ul li {
+li {
   padding: 12px;
   background: #f9f9f9;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   border-radius: 6px;
   margin-bottom: 8px;
   cursor: pointer;
 }
 
 .random-section {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
-#randomBtn {
-  margin-top: 10px; /* space between heading and button */
+.subtext {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+#randomRecipeContainer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#randomRecipeName {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.loader {
+  width: 14px;
+  height: 14px;
+  border: 2px solid white;
+  border-top: 2px solid #ff6b00;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
 .hidden {
   display: none;
 }
 
-#randomRecipeContainer {
-  margin-top: 20px;
-  padding: 15px;
-  background: #fffbe6;
-  border-left: 4px solid #ff6b00;
-  border-radius: 6px;
-  font-size: 1rem;
-  line-height: 1.5;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-#randomRecipeContainer button {
-  margin-top: 15px;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
