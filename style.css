@@ -114,6 +114,12 @@ li {
   text-align: center;
 }
 
+#randomRecipeContainer button {
+  margin: 0 auto;
+  display: block;
+}
+
+
 /* ➕ Add space between random recipe and view details */
 #randomRecipeContainer > *:not(:last-child) {
   margin-bottom: 8px;
