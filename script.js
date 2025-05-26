@@ -1,15 +1,45 @@
-const recipes = [
-  "Spaghetti Carbonara",
-  "Vegan Salad",
-  "Chicken Curry",
-  "Pancakes",
-  "Grilled Cheese Sandwich"
+const predefinedRecipes = [
+  { name: "Spaghetti Carbonara", details: "Pasta, eggs, cheese, bacon." },
+  { name: "Paneer Butter Masala", details: "Paneer, butter, cream, tomato gravy." },
+  { name: "Grilled Cheese Sandwich", details: "Bread, cheese, butter." },
+  { name: "Veg Biryani", details: "Basmati rice, vegetables, spices." },
+  { name: "Mango Smoothie", details: "Mango, yogurt, honey." },
+  { name: "Omelette", details: "Eggs, onion, green chili, salt." }
 ];
 
-const generateBtn = document.getElementById("generateBtn");
-const recipeDisplay = document.getElementById("recipeDisplay");
+const searchInput = document.getElementById('searchInput');
+const recipeList = document.getElementById('recipeList');
+const recipeDisplay = document.getElementById('recipeDisplay');
+const randomBtn = document.getElementById('randomBtn');
 
-generateBtn.addEventListener("click", () => {
-  const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
-  recipeDisplay.textContent = randomRecipe;
+function displayRecipeList(filteredRecipes) {
+  recipeList.innerHTML = '';
+  filteredRecipes.forEach(recipe => {
+    const li = document.createElement('li');
+    li.textContent = recipe.name;
+    li.addEventListener('click', () => {
+      recipeDisplay.innerHTML = `<strong>${recipe.name}</strong><br>${recipe.details}`;
+      recipeDisplay.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    recipeList.appendChild(li);
+  });
+}
+
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase();
+  const filtered = predefinedRecipes.filter(recipe =>
+    recipe.name.toLowerCase().includes(query)
+  );
+  displayRecipeList(filtered);
+});
+
+randomBtn.addEventListener('click', () => {
+  const randomRecipe = predefinedRecipes[Math.floor(Math.random() * predefinedRecipes.length)];
+  recipeDisplay.innerHTML = `<strong>${randomRecipe.name}</strong><br>${randomRecipe.details}`;
+  recipeDisplay.classList.remove('hidden');
+});
+
+window.addEventListener('load', () => {
+  displayRecipeList(predefinedRecipes);
 });
