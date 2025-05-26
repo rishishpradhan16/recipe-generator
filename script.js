@@ -1,3 +1,6 @@
+const searchInput = document.getElementById('searchInput');
+const recipeList = document.getElementById('recipeList');
+
 const predefinedRecipes = [
   { name: "Spaghetti Carbonara", details: "Pasta, eggs, cheese, bacon." },
   { name: "Paneer Butter Masala", details: "Paneer, butter, cream, tomato gravy." },
@@ -7,11 +10,6 @@ const predefinedRecipes = [
   { name: "Omelette", details: "Eggs, onion, green chili, salt." }
 ];
 
-const searchInput = document.getElementById('searchInput');
-const recipeList = document.getElementById('recipeList');
-const recipeDisplay = document.getElementById('recipeDisplay');
-const randomBtn = document.getElementById('randomBtn');
-
 function displayRecipeList(filteredRecipes) {
   recipeList.innerHTML = '';
   filteredRecipes.forEach(recipe => {
@@ -20,7 +18,6 @@ function displayRecipeList(filteredRecipes) {
     li.addEventListener('click', () => {
       recipeDisplay.innerHTML = `<strong>${recipe.name}</strong><br>${recipe.details}`;
       recipeDisplay.classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     recipeList.appendChild(li);
   });
@@ -34,12 +31,7 @@ searchInput.addEventListener('input', () => {
   displayRecipeList(filtered);
 });
 
-randomBtn.addEventListener('click', () => {
-  const randomRecipe = predefinedRecipes[Math.floor(Math.random() * predefinedRecipes.length)];
-  recipeDisplay.innerHTML = `<strong>${randomRecipe.name}</strong><br>${randomRecipe.details}`;
-  recipeDisplay.classList.remove('hidden');
-});
-
+// On load show all recipes
 window.addEventListener('load', () => {
   displayRecipeList(predefinedRecipes);
 });
