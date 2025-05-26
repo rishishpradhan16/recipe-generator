@@ -89,9 +89,16 @@ ul li {
 }
 
 #randomRecipeContainer {
-  margin-top: 15px;
+  margin-top: 20px;
   padding: 15px;
   background: #fffbe6;
   border-left: 4px solid #ff6b00;
   border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#randomRecipeContainer button {
+  margin-top: 15px;
 }
