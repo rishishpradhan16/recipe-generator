@@ -2,28 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recipe App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
+    <h1>🍽️ Recipe App</h1>
 
-    <!-- Search Recipes Section -->
-    <section class="search-section">
-      <h1>🍽️ Search Recipes</h1>
+    <!-- Search Section -->
+    <div class="controls">
       <input type="text" id="searchInput" placeholder="Search recipes..." />
-      <ul id="recipeList"></ul>
-      <div id="recipeDisplay" class="card hidden"></div>
-    </section>
+    </div>
 
-    <!-- Random Recipe Generator CTA Section -->
-    <section class="random-section">
-      <h2>Don't have anything in mind? Let's try something new!</h2>
-      <button id="randomBtn">🎲 Random Recipe</button>
-      <div id="randomRecipeDisplay" class="card hidden"></div>
-    </section>
+    <ul id="recipeList"></ul>
 
+    <!-- Random Section -->
+    <div class="random-section">
+      <h2>Don't have anything in mind? Try something new 👇</h2>
+      <button id="randomBtn">🎲 Generate Random Recipe</button>
+      <div id="randomRecipeContainer" class="hidden"></div>
+    </div>
   </div>
 
   <script src="script.js"></script>
