@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 20px;
   background: linear-gradient(to bottom right, #f5f5f5, #eaeaea);
   font-family: 'Open Sans', sans-serif;
   color: #333;
@@ -10,7 +10,6 @@ body {
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  padding: 20px;
 }
 
 .container {
@@ -20,39 +19,71 @@ body {
   padding: 25px 20px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  color: #444;
+  margin-bottom: 15px;
 }
 
 h1 {
-  font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #444;
 }
 
-.controls {
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-  margin-bottom: 20px;
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
-input[type="text"] {
+.search-section input[type="text"] {
+  width: 100%;
   padding: 12px;
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 1rem;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+#recipeList {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+#recipeList li {
+  padding: 12px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  border-radius: 6px;
+  margin: 6px;
+  transition: background-color 0.3s;
+}
+
+#recipeList li:hover {
+  background-color: #ffefcc;
 }
 
 button {
   background: #ff6b00;
   border: none;
   color: white;
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 6px;
+  padding: 15px;
+  font-size: 1.1rem;
+  border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s;
+  width: 100%;
+  max-width: 300px;
+  align-self: center;
 }
 
 button:hover {
@@ -62,26 +93,30 @@ button:hover {
 .card {
   background: #fffbe6;
   padding: 15px;
-  border-left: 4px solid #ff6b00;
-  margin-bottom: 15px;
+  border-left: 5px solid #ff6b00;
   border-radius: 6px;
   font-size: 1rem;
   line-height: 1.4;
+  margin-top: 15px;
 }
 
 .hidden {
   display: none;
 }
 
-#recipeList {
-  list-style: none;
-  padding: 0;
+.random-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
 }
 
-#recipeList li {
-  padding: 12px;
-  background: #f9f9f9;
-  border-bottom: 1px solid #ddd;
-  border-radius: 6px;
-  margin-bottom: 8px;
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 15px;
+  }
+  button {
+    max-width: 100%;
+  }
 }
