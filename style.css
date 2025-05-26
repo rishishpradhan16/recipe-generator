@@ -1,12 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
+  background: linear-gradient(135deg, #3e2723, #1b0000);
+  font-family: 'Open Sans', sans-serif;
+  color: #f5f5dc; /* beige/cream text */
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  background: rgba(50, 30, 20, 0.9); /* dark semi-transparent panel */
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  max-width: 500px;
+  width: 100%;
   text-align: center;
 }
 
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  color: #f9c784; /* warm gold accent */
+}
+
+button {
+  background: #d97706; /* warm orange */
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #b45309; /* darker orange on hover */
+}
+
 #recipeDisplay {
-  margin-top: 20px;
-  font-size: 1.2em;
+  margin-top: 25px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff9e6;
+  min-height: 2em;
 }
