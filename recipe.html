@@ -10,12 +10,33 @@
       background: #fff;
       padding: 20px;
       color: #333;
+      max-width: 600px;
+      margin: 0 auto;
     }
-    h2 {
+    h1 {
       color: #ff6b00;
+      text-align: center;
     }
     .recipe {
       margin-bottom: 30px;
+    }
+    .hidden {
+      display: none;
+    }
+    button {
+      background: #ff6b00;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: block;
+      margin: 30px auto 0 auto;
+    }
+    button:hover {
+      background: #e65c00;
     }
   </style>
 </head>
@@ -24,39 +45,64 @@
 
   <div class="recipe" id="spaghetti">
     <h2>Spaghetti Carbonara</h2>
-    <p>Ingredients: Pasta, eggs, cheese, bacon.</p>
-    <p>Instructions: Boil pasta, mix with scrambled eggs and cheese, add cooked bacon.</p>
+    <p><strong>Ingredients:</strong> Pasta, eggs, cheese, bacon.</p>
+    <p><strong>Instructions:</strong> Boil pasta, mix with scrambled eggs and cheese, add cooked bacon.</p>
   </div>
 
-  <div class="recipe" id="paneer">
+  <div class="recipe hidden" id="paneer">
     <h2>Paneer Butter Masala</h2>
-    <p>Ingredients: Paneer, butter, cream, tomato gravy.</p>
-    <p>Instructions: Cook tomato gravy, add paneer and cream, simmer in butter.</p>
+    <p><strong>Ingredients:</strong> Paneer, butter, cream, tomato gravy.</p>
+    <p><strong>Instructions:</strong> Cook tomato gravy, add paneer and cream, simmer in butter.</p>
   </div>
 
-  <div class="recipe" id="sandwich">
+  <div class="recipe hidden" id="sandwich">
     <h2>Grilled Cheese Sandwich</h2>
-    <p>Ingredients: Bread, cheese, butter.</p>
-    <p>Instructions: Butter bread, place cheese between slices, grill till golden brown.</p>
+    <p><strong>Ingredients:</strong> Bread, cheese, butter.</p>
+    <p><strong>Instructions:</strong> Butter bread, place cheese between slices, grill till golden brown.</p>
   </div>
 
-  <div class="recipe" id="biryani">
+  <div class="recipe hidden" id="biryani">
     <h2>Veg Biryani</h2>
-    <p>Ingredients: Basmati rice, vegetables, spices.</p>
-    <p>Instructions: Cook rice and vegetables separately, layer with spices, steam together.</p>
+    <p><strong>Ingredients:</strong> Basmati rice, vegetables, spices.</p>
+    <p><strong>Instructions:</strong> Cook rice and vegetables separately, layer with spices, steam together.</p>
   </div>
 
-  <div class="recipe" id="mango">
+  <div class="recipe hidden" id="mango">
     <h2>Mango Smoothie</h2>
-    <p>Ingredients: Mango, yogurt, honey.</p>
-    <p>Instructions: Blend all ingredients till smooth, serve chilled.</p>
+    <p><strong>Ingredients:</strong> Mango, yogurt, honey.</p>
+    <p><strong>Instructions:</strong> Blend all ingredients till smooth, serve chilled.</p>
   </div>
 
-  <div class="recipe" id="omelette">
+  <div class="recipe hidden" id="omelette">
     <h2>Omelette</h2>
-    <p>Ingredients: Eggs, onion, green chili, salt.</p>
-    <p>Instructions: Beat eggs with chopped veggies, cook on pan till fluffy.</p>
+    <p><strong>Ingredients:</strong> Eggs, onion, green chili, salt.</p>
+    <p><strong>Instructions:</strong> Beat eggs with chopped veggies, cook on pan till fluffy.</p>
   </div>
 
+  <button id="backBtn">⬅️ Back to Home</button>
+
+  <script>
+    const recipes = ['spaghetti', 'paneer', 'sandwich', 'biryani', 'mango', 'omelette'];
+    const hash = window.location.hash.substring(1);
+    
+    function showSelectedRecipe(id) {
+      recipes.forEach(r => {
+        document.getElementById(r).classList.add('hidden');
+      });
+      if (recipes.includes(id)) {
+        document.getElementById(id).classList.remove('hidden');
+      } else {
+        // If no or unknown hash, show default first recipe
+        document.getElementById(recipes[0]).classList.remove('hidden');
+      }
+    }
+
+    showSelectedRecipe(hash);
+
+    document.getElementById('backBtn').addEventListener('click', () => {
+      // Go back to index.html and reset random recipe to default state
+      window.location.href = 'index.html';
+    });
+  </script>
 </body>
 </html>
