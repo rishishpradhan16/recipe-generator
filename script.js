@@ -33,7 +33,6 @@ const recipes = [
   }
 ];
 
-// Search filter
 searchInput.addEventListener('input', () => {
   const query = searchInput.value.toLowerCase();
   const filtered = recipes.filter(recipe =>
@@ -55,12 +54,10 @@ function displayRecipeList(filtered) {
   });
 }
 
-// On load
 window.addEventListener('load', () => {
   displayRecipeList(recipes);
 });
 
-// Chef's Choice button
 randomBtn.addEventListener('click', () => {
   loader.classList.remove('hidden');
   randomContainer.classList.add('hidden');
