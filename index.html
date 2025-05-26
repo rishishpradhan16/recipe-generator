@@ -2,15 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Random Recipe Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Random Recipe Generator</h1>
-    <button id="generateBtn">Get Recipe</button>
-    <div id="recipeDisplay"></div>
+    <h1>🍽️ Recipe App</h1>
+
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search recipes..." />
+      <button id="randomBtn">🎲 Random Recipe</button>
+    </div>
+
+    <div id="recipeDisplay" class="card hidden"></div>
+
+    <ul id="recipeList"></ul>
   </div>
 
   <script src="script.js"></script>
