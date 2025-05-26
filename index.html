@@ -8,16 +8,22 @@
 </head>
 <body>
   <div class="container">
-    <h1>🍽️ Recipe App</h1>
 
-    <div class="controls">
+    <!-- Search Recipes Section -->
+    <section class="search-section">
+      <h1>🍽️ Search Recipes</h1>
       <input type="text" id="searchInput" placeholder="Search recipes..." />
+      <ul id="recipeList"></ul>
+      <div id="recipeDisplay" class="card hidden"></div>
+    </section>
+
+    <!-- Random Recipe Generator CTA Section -->
+    <section class="random-section">
+      <h2>Don't have anything in mind? Let's try something new!</h2>
       <button id="randomBtn">🎲 Random Recipe</button>
-    </div>
+      <div id="randomRecipeDisplay" class="card hidden"></div>
+    </section>
 
-    <div id="recipeDisplay" class="card hidden"></div>
-
-    <ul id="recipeList"></ul>
   </div>
 
   <script src="script.js"></script>
