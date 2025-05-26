@@ -1,53 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap');
 
+/* Base styling */
 body {
   background: linear-gradient(135deg, #3e2723, #1b0000);
   font-family: 'Open Sans', sans-serif;
-  color: #f5f5dc; /* beige/cream text */
+  color: #f5f5dc;
   margin: 0;
-  padding: 40px 20px;
+  padding: 30px 15px;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   min-height: 100vh;
 }
 
 .container {
-  background: rgba(50, 30, 20, 0.9); /* dark semi-transparent panel */
-  padding: 30px 40px;
+  background: rgba(50, 30, 20, 0.9);
+  padding: 25px 30px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-  max-width: 500px;
+  max-width: 480px;
   width: 100%;
   text-align: center;
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
-  margin-bottom: 20px;
-  color: #f9c784; /* warm gold accent */
+  font-size: 2.4rem;
+  margin-bottom: 25px;
+  color: #f9c784;
+  line-height: 1.2;
 }
 
 button {
-  background: #d97706; /* warm orange */
+  background: #d97706;
   border: none;
   color: white;
-  padding: 14px 28px;
-  font-size: 1.1rem;
+  padding: 16px 35px;
+  font-size: 1.2rem;
   border-radius: 30px;
   cursor: pointer;
   transition: background 0.3s ease;
   font-weight: 600;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 25px;
+  display: block;
+  box-shadow: 0 4px 8px rgba(217, 119, 6, 0.5);
 }
 
 button:hover {
-  background: #b45309; /* darker orange on hover */
+  background: #b45309;
 }
 
 #recipeDisplay {
-  margin-top: 25px;
   font-size: 1.4rem;
   font-weight: 600;
   color: #fff9e6;
-  min-height: 2em;
+  min-height: 3em;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* Larger screens */
+@media (min-width: 600px) {
+  body {
+    align-items: center;
+    padding: 40px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  #recipeDisplay {
+    font-size: 1.6rem;
+  }
 }
