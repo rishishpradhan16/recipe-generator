@@ -80,6 +80,10 @@ ul li {
   margin-top: 20px;
 }
 
+#randomBtn {
+  margin-top: 10px; /* space between heading and button */
+}
+
 .hidden {
   display: none;
 }
