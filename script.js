@@ -38,7 +38,8 @@ randomBtn.addEventListener('click', () => {
   randomContainer.classList.remove('hidden');
 });
 
-// Load all recipes initially
+// Reset random recipe container when page loads or user returns to home
 window.addEventListener('load', () => {
   displayRecipeList(recipes);
+  randomContainer.classList.add('hidden');
 });
