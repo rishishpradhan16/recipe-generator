@@ -1,5 +1,7 @@
 const searchInput = document.getElementById('searchInput');
 const recipeList = document.getElementById('recipeList');
+const recipeDisplay = document.getElementById('recipeDisplay');
+const randomBtn = document.getElementById('randomBtn');
 
 const predefinedRecipes = [
   { name: "Spaghetti Carbonara", details: "Pasta, eggs, cheese, bacon." },
@@ -29,9 +31,18 @@ searchInput.addEventListener('input', () => {
     recipe.name.toLowerCase().includes(query)
   );
   displayRecipeList(filtered);
+  recipeDisplay.classList.add('hidden'); // Hide recipe display on search
 });
 
-// On load show all recipes
+randomBtn.addEventListener('click', () => {
+  const randomIndex = Math.floor(Math.random() * predefinedRecipes.length);
+  const randomRecipe = predefinedRecipes[randomIndex];
+  recipeDisplay.innerHTML = `<strong>${randomRecipe.name}</strong><br>${randomRecipe.details}`;
+  recipeDisplay.classList.remove('hidden');
+  searchInput.value = '';
+  displayRecipeList(predefinedRecipes);
+});
+
 window.addEventListener('load', () => {
   displayRecipeList(predefinedRecipes);
 });
