@@ -10,18 +10,22 @@
   <div class="container">
     <h1>🍽️ Recipe App</h1>
 
-    <!-- Search Section -->
     <div class="controls">
       <input type="text" id="searchInput" placeholder="Search recipes..." />
     </div>
 
     <ul id="recipeList"></ul>
 
-    <!-- Random Section -->
     <div class="random-section">
-      <h2>Can’t decide? Here’s a surprise 👇</h2>
-      <button id="randomBtn">Chef’s Choice</button>
-      <div id="randomRecipeContainer" class="hidden"></div>
+      <p class="subtext">Don’t have anything in mind? Try something new 👇</p>
+      <button id="randomBtn">
+        👨‍🍳 Chef’s Choice
+        <span class="loader hidden" id="loader"></span>
+      </button>
+      <div id="randomRecipeContainer" class="hidden">
+        <p id="randomRecipeName"></p>
+        <button id="viewRandomDetailsBtn">View Details</button>
+      </div>
     </div>
   </div>
 
