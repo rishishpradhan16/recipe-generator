@@ -3,38 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Recipe App</title>
+  <title>Recipe Generator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>🍽️ Recipe App</h1>
+    <h1>🍽️ My Recipe App</h1>
 
     <div class="controls">
       <input type="text" id="searchInput" placeholder="Search recipes..." />
-      <button id="toggleFilterBtn">Filter by Ingredients</button>
+      <button id="ingredientFilterToggle">🧂 Ingredient Filter</button>
     </div>
 
-    <div id="ingredientFilter" class="hidden">
-      <label><input type="checkbox" value="Egg" /> Egg</label>
-      <label><input type="checkbox" value="Milk" /> Milk</label>
-      <label><input type="checkbox" value="Mango" /> Mango</label>
-      <label><input type="checkbox" value="Fish" /> Fish</label>
-      <label><input type="checkbox" value="Chicken" /> Chicken</label>
-      <button id="applyFilterBtn">Apply Filter</button>
+    <div id="ingredientFilter" class="ingredient-filter hidden">
+      <div class="ingredient-options">
+        <label><input type="checkbox" name="ingredients" value="Egg"> Egg</label>
+        <label><input type="checkbox" name="ingredients" value="Milk"> Milk</label>
+        <label><input type="checkbox" name="ingredients" value="Mango"> Mango</label>
+        <label><input type="checkbox" name="ingredients" value="Fish"> Fish</label>
+        <label><input type="checkbox" name="ingredients" value="Chicken"> Chicken</label>
+      </div>
+      <button onclick="applyIngredientFilter()">Apply Filter</button>
     </div>
 
     <ul id="recipeList"></ul>
 
     <div class="random-section">
-      <p class="subtext">Can’t decide? Here’s a surprise </p>
+      <p class="subtext">Not sure what to cook?</p>
       <button id="randomBtn">
-        👨‍🍳 Chef’s Choice
         <span class="loader hidden" id="loader"></span>
+        👨‍🍳 Chef’s Choice
       </button>
+
       <div id="randomRecipeContainer" class="hidden">
         <p id="randomRecipeName"></p>
-        <button id="viewRandomDetailsBtn">View Details</button>
+        <button id="viewRandomDetailsBtn">View Recipe Details</button>
       </div>
     </div>
   </div>
