@@ -3,9 +3,9 @@
 body {
   margin: 0;
   padding: 0;
+  background: #f1f7f1;
   font-family: 'Open Sans', sans-serif;
   color: #333;
-  background-color: #f0fff0; /* clean light green */
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -16,28 +16,27 @@ body {
 .container {
   width: 100%;
   max-width: 500px;
-  background: #e0fce0; /* Light green */
+  background: #eaffea;
   padding: 25px 20px;
-  border-radius: 18px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  background: #ff3366; /* Pink/red header */
+  background-color: #ff6b81;
   color: white;
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   text-align: center;
-  margin: -25px -20px 20px;
-  padding: 20px;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
+  padding: 10px;
+  margin: -25px -20px 20px -20px;
+  border-radius: 12px 12px 0 0;
 }
 
 .controls {
   display: flex;
-  gap: 10px;
   flex-direction: column;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
@@ -51,7 +50,7 @@ input[type="text"] {
 }
 
 button {
-  background: #ff6b00;
+  background: #ff6b81;
   border: none;
   color: white;
   padding: 12px;
@@ -59,14 +58,10 @@ button {
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
 }
 
 button:hover {
-  background: #e65c00;
+  background: #e65c70;
 }
 
 ul {
@@ -90,21 +85,8 @@ li {
 }
 
 #randomBtn {
-  background: #ff6b00;
-  border: none;
-  color: white;
-  padding: 10px 18px;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
   margin-top: 10px;
 }
-
 
 .subtext {
   text-align: center;
@@ -121,10 +103,6 @@ li {
 #randomRecipeContainer button {
   margin: 0 auto;
   display: block;
-}
-
-#randomRecipeContainer > *:not(:last-child) {
-  margin-bottom: 8px;
 }
 
 #randomRecipeName {
@@ -149,4 +127,17 @@ li {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+#ingredientFilter {
+  background-color: #f2fff2;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+#ingredientFilter label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
 }
