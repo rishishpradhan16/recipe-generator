@@ -5,42 +5,36 @@ const loader = document.getElementById('loader');
 const randomContainer = document.getElementById('randomRecipeContainer');
 const randomName = document.getElementById('randomRecipeName');
 const viewRandomBtn = document.getElementById('viewRandomDetailsBtn');
-const toggleFilterBtn = document.getElementById('toggleFilterBtn');
-const ingredientOptions = document.getElementById('ingredientOptions');
+const toggleFilter = document.getElementById('toggleFilter');
+const ingredientFilter = document.getElementById('ingredientFilter');
 const applyFilterBtn = document.getElementById('applyFilterBtn');
 
 const recipes = [
   {
-    name: "Spaghetti Carbonara",
-    details: "Ingredients: Pasta, eggs, cheese, bacon.",
-    ingredients: ["Pasta", "Egg", "Cheese", "Bacon"]
-  },
-  {
-    name: "Paneer Butter Masala",
-    details: "Ingredients: Paneer, butter, cream, tomato gravy.",
-    ingredients: ["Paneer", "Butter", "Cream", "Tomato"]
-  },
-  {
-    name: "Grilled Cheese Sandwich",
-    details: "Ingredients: Bread, cheese, butter.",
-    ingredients: ["Bread", "Cheese", "Butter"]
-  },
-  {
-    name: "Veg Biryani",
-    details: "Ingredients: Basmati rice, vegetables, spices.",
-    ingredients: ["Rice", "Vegetables", "Spices"]
+    name: "Omelette",
+    details: "Ingredients: Egg, Milk\n\nInstructions: Beat eggs with milk, cook in pan.",
+    ingredients: ["Egg", "Milk"]
   },
   {
     name: "Mango Smoothie",
-    details: "Ingredients: Mango, yogurt, honey.",
-    ingredients: ["Mango", "Yogurt", "Honey"]
+    details: "Ingredients: Mango, Milk\n\nInstructions: Blend ingredients till smooth.",
+    ingredients: ["Mango", "Milk"]
   },
   {
-    name: "Omelette",
-    details: "Ingredients: Eggs, onion, green chili, salt.",
-    ingredients: ["Egg", "Onion", "Chili", "Salt"]
+    name: "Grilled Cheese Sandwich",
+    details: "Ingredients: Bread, Cheese, Butter\n\nInstructions: Assemble sandwich and grill.",
+    ingredients: ["Bread", "Cheese", "Butter"]
   }
 ];
+
+// Search filter
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase();
+  const filtered = recipes.filter(recipe =>
+    recipe.name.toLowerCase().includes(query)
+  );
+  displayRecipeList(filtered);
+});
 
 function displayRecipeList(filtered) {
   recipeList.innerHTML = '';
@@ -55,18 +49,12 @@ function displayRecipeList(filtered) {
   });
 }
 
-searchInput.addEventListener('input', () => {
-  const query = searchInput.value.toLowerCase();
-  const filtered = recipes.filter(recipe =>
-    recipe.name.toLowerCase().includes(query)
-  );
-  displayRecipeList(filtered);
-});
-
+// On load
 window.addEventListener('load', () => {
   displayRecipeList(recipes);
 });
 
+// Chef's Choice button
 randomBtn.addEventListener('click', () => {
   loader.classList.remove('hidden');
   randomContainer.classList.add('hidden');
@@ -80,19 +68,23 @@ randomBtn.addEventListener('click', () => {
       window.location.href = 'recipe.html';
     };
     randomContainer.classList.remove('hidden');
-  }, 3000);
+  }, 2000);
 });
 
-// Filter functionality
-toggleFilterBtn.addEventListener('click', () => {
-  ingredientOptions.classList.toggle('hidden');
+// Toggle ingredient filter visibility
+toggleFilter.addEventListener('click', () => {
+  ingredientFilter.classList.toggle('hidden');
 });
 
+// Apply ingredient filter
 applyFilterBtn.addEventListener('click', () => {
-  const selected = Array.from(document.querySelectorAll('#ingredientOptions input:checked')).map(cb => cb.value);
-  const filtered = recipes.filter(recipe =>
-    selected.length > 0 &&
-    recipe.ingredients.every(ing => selected.includes(ing))
+  const selectedIngredients = Array.from(
+    ingredientFilter.querySelectorAll('input[type="checkbox"]:checked')
+  ).map(cb => cb.value);
+
+  const matched = recipes.filter(recipe =>
+    selectedIngredients.every(ing => recipe.ingredients.includes(ing))
   );
-  displayRecipeList(filtered.length ? filtered : []);
+
+  displayRecipeList(matched);
 });
