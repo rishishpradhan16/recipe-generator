@@ -40,6 +40,10 @@ const recipes = [
 
 function displayRecipeList(list) {
   recipeList.innerHTML = '';
+  if (list.length === 0) {
+    recipeList.innerHTML = '<li>No matching recipes found.</li>';
+    return;
+  }
   list.forEach(recipe => {
     const li = document.createElement('li');
     li.textContent = recipe.name;
@@ -51,24 +55,29 @@ function displayRecipeList(list) {
   });
 }
 
-// Toggle ingredient filter visibility
+// Toggle filter visibility
 toggleFilterBtn.addEventListener('click', () => {
   ingredientFilter.classList.toggle('hidden');
 });
 
-// Apply ingredient filter
+// Fix: Match at least one ingredient (not all)
 applyFilterBtn.addEventListener('click', () => {
   const selected = Array.from(ingredientFilter.querySelectorAll('input[type="checkbox"]:checked'))
     .map(input => input.value);
 
+  if (selected.length === 0) {
+    displayRecipeList(recipes);
+    return;
+  }
+
   const filtered = recipes.filter(recipe =>
-    selected.every(ingredient => recipe.ingredients.includes(ingredient))
+    recipe.ingredients.some(ing => selected.includes(ing))
   );
 
   displayRecipeList(filtered);
 });
 
-// Search by name
+// Search input
 searchInput.addEventListener('input', () => {
   const query = searchInput.value.toLowerCase();
   const filtered = recipes.filter(recipe =>
@@ -77,24 +86,29 @@ searchInput.addEventListener('input', () => {
   displayRecipeList(filtered);
 });
 
-// Chef's choice
+// Chef's Choice
 randomBtn.addEventListener('click', () => {
   loader.classList.remove('hidden');
   randomContainer.classList.add('hidden');
+  randomBtn.disabled = true;
 
   setTimeout(() => {
     loader.classList.add('hidden');
+    randomBtn.disabled = false;
+
     const random = recipes[Math.floor(Math.random() * recipes.length)];
     randomName.textContent = random.name;
+
     viewRandomBtn.onclick = () => {
       sessionStorage.setItem('selectedRecipe', JSON.stringify(random));
       window.location.href = 'recipe.html';
     };
+
     randomContainer.classList.remove('hidden');
   }, 3000);
 });
 
-// Initial list
+// Initial display
 window.addEventListener('load', () => {
   displayRecipeList(recipes);
 });
