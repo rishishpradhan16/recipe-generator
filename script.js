@@ -5,45 +5,41 @@ const loader = document.getElementById('loader');
 const randomContainer = document.getElementById('randomRecipeContainer');
 const randomName = document.getElementById('randomRecipeName');
 const viewRandomBtn = document.getElementById('viewRandomDetailsBtn');
-const toggleIngredientsBtn = document.getElementById('toggleIngredientsBtn');
 const ingredientFilter = document.getElementById('ingredientFilter');
-const applyIngredientFilter = document.getElementById('applyIngredientFilter');
-const noResults = document.getElementById('noResults');
 
 const recipes = [
-  { name: "Spaghetti Carbonara", ingredients: ["Pasta", "Egg"], details: "Boil pasta, mix with egg sauce." },
-  { name: "Paneer Butter Masala", ingredients: ["Paneer", "Tomato"], details: "Cook tomato gravy, add paneer." },
-  { name: "Grilled Cheese Sandwich", ingredients: ["Bread", "Cheese"], details: "Grill cheese in bread." },
-  { name: "Veg Biryani", ingredients: ["Rice", "Tomato"], details: "Layer rice and veggies." },
-  { name: "Mango Smoothie", ingredients: ["Mango", "Milk"], details: "Blend mango and milk." },
-  { name: "Omelette", ingredients: ["Egg", "Milk"], details: "Beat and cook egg with milk." },
-  { name: "Fish Curry", ingredients: ["Fish", "Tomato"], details: "Cook fish in curry." },
-  { name: "Chicken Tikka", ingredients: ["Chicken"], details: "Grill marinated chicken." }
+  { name: "Spaghetti Carbonara", ingredients: ["Pasta", "Egg", "Cheese", "Bacon"], details: "Ingredients: Pasta, Egg, Cheese, Bacon.\n\nInstructions: Boil pasta, mix with scrambled eggs and cheese, add cooked bacon." },
+  { name: "Paneer Butter Masala", ingredients: ["Paneer", "Butter", "Cream", "Tomato"], details: "Ingredients: Paneer, Butter, Cream, Tomato.\n\nInstructions: Cook tomato gravy, add paneer and cream, simmer in butter." },
+  { name: "Grilled Cheese Sandwich", ingredients: ["Bread", "Cheese", "Butter"], details: "Ingredients: Bread, Cheese, Butter.\n\nInstructions: Butter bread, place cheese between slices, grill till golden brown." },
+  { name: "Veg Biryani", ingredients: ["Rice", "Vegetables", "Spices"], details: "Ingredients: Rice, Vegetables, Spices.\n\nInstructions: Cook rice and vegetables separately, layer with spices, steam together." },
+  { name: "Mango Smoothie", ingredients: ["Mango", "Milk"], details: "Ingredients: Mango, Milk.\n\nInstructions: Blend all ingredients till smooth, serve chilled." },
+  { name: "Omelette", ingredients: ["Egg", "Milk"], details: "Ingredients: Egg, Milk.\n\nInstructions: Beat eggs with milk, cook on pan till fluffy." },
+  { name: "Fried Fish", ingredients: ["Fish", "Spices"], details: "Ingredients: Fish, Spices.\n\nInstructions: Marinate fish in spices, shallow fry until crispy." },
+  { name: "Chicken Curry", ingredients: ["Chicken", "Tomato", "Spices"], details: "Ingredients: Chicken, Tomato, Spices.\n\nInstructions: Cook chicken in spicy tomato gravy until tender." }
 ];
+
+function displayRecipeList(list) {
+  recipeList.innerHTML = '';
+  if (list.length === 0) {
+    recipeList.innerHTML = '<li>No recipes found.</li>';
+    return;
+  }
+  list.forEach(recipe => {
+    const li = document.createElement('li');
+    li.textContent = recipe.name;
+    li.addEventListener('click', () => {
+      sessionStorage.setItem('selectedRecipe', JSON.stringify(recipe));
+      window.location.href = 'recipe.html';
+    });
+    recipeList.appendChild(li);
+  });
+}
 
 searchInput.addEventListener('input', () => {
   const query = searchInput.value.toLowerCase();
   const filtered = recipes.filter(recipe => recipe.name.toLowerCase().includes(query));
   displayRecipeList(filtered);
 });
-
-function displayRecipeList(list) {
-  recipeList.innerHTML = '';
-  noResults.classList.add('hidden');
-  if (list.length === 0) {
-    noResults.classList.remove('hidden');
-  } else {
-    list.forEach(recipe => {
-      const li = document.createElement('li');
-      li.textContent = recipe.name;
-      li.addEventListener('click', () => {
-        sessionStorage.setItem('selectedRecipe', JSON.stringify(recipe));
-        window.location.href = 'recipe.html';
-      });
-      recipeList.appendChild(li);
-    });
-  }
-}
 
 window.addEventListener('load', () => {
   displayRecipeList(recipes);
@@ -61,17 +57,17 @@ randomBtn.addEventListener('click', () => {
       window.location.href = 'recipe.html';
     };
     randomContainer.classList.remove('hidden');
-  }, 2000);
+  }, 3000);
 });
 
-toggleIngredientsBtn.addEventListener('click', () => {
+function toggleIngredientFilter() {
   ingredientFilter.classList.toggle('hidden');
-});
+}
 
-applyIngredientFilter.addEventListener('click', () => {
-  const selected = [...ingredientFilter.querySelectorAll('input:checked')].map(i => i.value);
-  const filtered = recipes.filter(recipe =>
+function applyIngredientFilter() {
+  const selected = Array.from(ingredientFilter.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+  const matched = recipes.filter(recipe =>
     selected.every(ing => recipe.ingredients.includes(ing))
   );
-  displayRecipeList(filtered);
-});
+  displayRecipeList(matched);
+}
