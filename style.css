@@ -148,7 +148,15 @@ li {
   100% { transform: rotate(360deg); }
 }
 
-#ingredientFilter label {
-  display: block;
-  margin: 4px 0;
+#ingredientFilter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 🔧 Key change: align left */
+  gap: 8px;
+  background: #eaffea;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
