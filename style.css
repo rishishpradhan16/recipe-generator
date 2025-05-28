@@ -67,8 +67,14 @@ button:hover {
 }
 
 .ingredient-toggle-btn {
-  background-color: #6db3f2;
+  background-color: #3f87cc; /* medium blue */
+  transition: none;
 }
+
+.ingredient-toggle-btn:hover {
+  background-color: #3f87cc; /* same on hover */
+}
+
 
 ul {
   list-style: none;
