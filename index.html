@@ -38,9 +38,11 @@
     <div class="random-section">
       <p class="subtext">Can’t decide? Here’s a surprise</p>
       <button id="randomBtn"><span id="loader" class="loader hidden"></span>🎲 Chef's Choice</button>
-      <div id="randomRecipeContainer" class="hidden" style="margin-top: 20px; text-align: center;">
-        <p id="randomRecipeName" style="margin-bottom: 10px; font-weight: bold; font-size: 1.1rem;"></p>
-        <button id="viewRandomDetailsBtn" style="margin-top: 10px;">View Details</button>
+      <div id="randomRecipeContainer" class="hidden random-recipe-container">
+        <p id="randomRecipeName" class="random-recipe-name"></p>
+        <div class="random-view-btn-wrapper">
+          <button id="viewRandomDetailsBtn">View Details</button>
+        </div>
       </div>
     </div>
   </div>
