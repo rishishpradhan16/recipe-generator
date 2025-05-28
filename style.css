@@ -2,21 +2,20 @@
 
 body {
   margin: 0;
-  padding: 0;
-  background: linear-gradient(to bottom right, #fdfdfd, #eaeaea);
+  padding: 20px;
+  background: linear-gradient(to bottom right, #f5f5f5, #eaeaea);
   font-family: 'Open Sans', sans-serif;
   color: #333;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  padding: 20px;
 }
 
 .container {
   width: 100%;
   max-width: 500px;
-  background: #d6f5d6;
+  background: #e9fbe9;
   padding: 25px 20px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -27,8 +26,8 @@ h1 {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 20px;
-  background: #ff4d6d;
-  color: white;
+  color: #fff;
+  background: #ff4c4c;
   padding: 12px;
   border-radius: 8px;
 }
@@ -36,7 +35,7 @@ h1 {
 .controls {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
@@ -46,7 +45,6 @@ input[type="text"] {
   border: 1px solid #ccc;
   font-size: 1rem;
   width: 100%;
-  box-sizing: border-box;
 }
 
 button {
@@ -58,7 +56,7 @@ button {
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -68,23 +66,26 @@ button:hover {
   background: #e65c00;
 }
 
+.ingredient-toggle-btn {
+  background-color: #6db3f2;
+}
+
 ul {
   list-style: none;
   padding: 0;
-  margin-bottom: 25px;
+  margin: 0 0 20px 0;
 }
 
 li {
   padding: 12px;
   background: #f9f9f9;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
   border-radius: 6px;
   margin-bottom: 8px;
   cursor: pointer;
 }
 
 .random-section {
-  margin-top: 30px;
   text-align: center;
 }
 
@@ -95,9 +96,11 @@ li {
   font-size: 0.95rem;
 }
 
-#randomRecipeContainer {
-  margin-top: 20px;
-  text-align: center;
+#randomBtn {
+  margin: 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #randomRecipeContainer > *:not(:last-child) {
@@ -105,6 +108,7 @@ li {
 }
 
 #randomRecipeName {
+  margin-bottom: 10px;
   font-weight: bold;
   font-size: 1.1rem;
 }
@@ -127,16 +131,7 @@ li {
   100% { transform: rotate(360deg); }
 }
 
-#ingredientFilter {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
-  background: #f0fff0;
-  padding: 12px;
-  border-radius: 8px;
-}
-
-label {
-  font-size: 1rem;
+#ingredientFilter label {
+  display: block;
+  margin: 4px 0;
 }
