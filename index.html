@@ -12,35 +12,31 @@
 
     <div class="controls">
       <input type="text" id="searchInput" placeholder="Search recipes..." />
+      <button id="toggleIngredientsBtn">Filter by Ingredients</button>
     </div>
 
-    <button class="toggle-filter-btn" onclick="toggleIngredientFilter()">🔍 Filter by Ingredients</button>
     <div id="ingredientFilter" class="hidden">
-      <div class="ingredient-options">
-        <label><input type="checkbox" value="Egg" /> Egg</label>
-        <label><input type="checkbox" value="Milk" /> Milk</label>
-        <label><input type="checkbox" value="Mango" /> Mango</label>
-        <label><input type="checkbox" value="Fish" /> Fish</label>
-        <label><input type="checkbox" value="Chicken" /> Chicken</label>
-        <label><input type="checkbox" value="Bread" /> Bread</label>
-        <label><input type="checkbox" value="Cheese" /> Cheese</label>
-        <label><input type="checkbox" value="Tomato" /> Tomato</label>
-        <label><input type="checkbox" value="Pasta" /> Pasta</label>
-        <label><input type="checkbox" value="Bacon" /> Bacon</label>
-        <label><input type="checkbox" value="Rice" /> Rice</label>
-        <label><input type="checkbox" value="Vegetables" /> Vegetables</label>
-        <label><input type="checkbox" value="Yogurt" /> Yogurt</label>
-      </div>
-      <button onclick="applyFilter()">Apply Filter</button>
+      <label><input type="checkbox" value="Egg" /> Egg</label>
+      <label><input type="checkbox" value="Milk" /> Milk</label>
+      <label><input type="checkbox" value="Mango" /> Mango</label>
+      <label><input type="checkbox" value="Fish" /> Fish</label>
+      <label><input type="checkbox" value="Chicken" /> Chicken</label>
+      <label><input type="checkbox" value="Pasta" /> Pasta</label>
+      <label><input type="checkbox" value="Cheese" /> Cheese</label>
+      <label><input type="checkbox" value="Bread" /> Bread</label>
+      <label><input type="checkbox" value="Tomato" /> Tomato</label>
+      <label><input type="checkbox" value="Rice" /> Rice</label>
+      <label><input type="checkbox" value="Paneer" /> Paneer</label>
+      <button id="applyIngredientFilter">Apply Filter</button>
     </div>
 
     <ul id="recipeList"></ul>
+    <p id="noResults" class="hidden">No recipes found.</p>
 
     <div class="random-section">
       <p class="subtext">Can’t decide? Here’s a surprise</p>
       <button id="randomBtn">
-        👨‍🍳 Chef’s Choice
-        <span class="loader hidden" id="loader"></span>
+        <span class="loader hidden" id="loader"></span> 👨‍🍳 Chef’s Choice
       </button>
       <div id="randomRecipeContainer" class="hidden">
         <p id="randomRecipeName"></p>
