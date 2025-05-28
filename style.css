@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #f8fef8;
+  background: #f0fdf4;
   font-family: 'Open Sans', sans-serif;
   color: #333;
   display: flex;
@@ -16,27 +16,25 @@ body {
 .container {
   width: 100%;
   max-width: 500px;
-  background: #e6ffe6;
+  background: #e9ffe6;
   padding: 25px 20px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  background: #ff4d6d;
-  color: white;
-  padding: 12px;
-  border-radius: 8px;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
   text-align: center;
   margin-bottom: 20px;
-  font-family: 'Playfair Display', serif;
+  color: white;
+  background: #ff4d6d;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .controls {
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 input[type="text"] {
@@ -46,6 +44,28 @@ input[type="text"] {
   font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
+}
+
+.toggle-filter-btn {
+  margin-bottom: 10px;
+  width: 100%;
+  background: #009688;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ingredient-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.ingredient-options label {
+  flex: 1 0 45%;
 }
 
 button {
@@ -75,8 +95,8 @@ ul {
 
 li {
   padding: 12px;
-  background: #f9f9f9;
-  border-bottom: 1px solid #ddd;
+  background: #fff;
+  border: 1px solid #ddd;
   border-radius: 6px;
   margin-bottom: 8px;
   cursor: pointer;
@@ -85,12 +105,6 @@ li {
 .random-section {
   margin-top: 30px;
   text-align: center;
-}
-
-#randomBtn {
-  background: #ff6b00;
-  display: inline-flex;
-  margin-top: 10px;
 }
 
 .subtext {
@@ -108,6 +122,10 @@ li {
 #randomRecipeContainer button {
   margin: 0 auto;
   display: block;
+}
+
+#randomRecipeContainer > *:not(:last-child) {
+  margin-bottom: 8px;
 }
 
 #randomRecipeName {
@@ -132,30 +150,4 @@ li {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-#ingredientFilter {
-  background: #f2fff2;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-}
-
-#ingredientFilter label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-#applyFilterBtn {
-  margin-top: 10px;
-  width: 100%;
-}
-
-.filter-toggle {
-  background: #ccffcc;
-  padding: 10px;
-  border-radius: 6px;
-  text-align: center;
-  margin-bottom: 10px;
-  cursor: pointer;
 }
