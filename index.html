@@ -14,8 +14,7 @@
       <input type="text" id="searchInput" placeholder="Search recipes..." />
       <button class="ingredient-toggle-btn" onclick="toggleIngredientFilter()">🧂 Filter by Ingredients</button>
       
-      <!-- Ingredient filter: HIDDEN by default -->
-      <div id="ingredientFilter" class="ingredient-filter hidden">
+      <div id="ingredientFilter" class="hidden">
         <label><input type="checkbox" value="Egg"> Egg</label>
         <label><input type="checkbox" value="Milk"> Milk</label>
         <label><input type="checkbox" value="Mango"> Mango</label>
@@ -41,8 +40,8 @@
       <p class="subtext">Can’t decide? Here’s a surprise</p>
       <button id="randomBtn"><span id="loader" class="loader hidden"></span>🎲 Chef's Choice</button>
       <div id="randomRecipeContainer" class="hidden" style="text-align:center;">
-         <p id="randomRecipeName"></p>
-         <button id="viewRandomDetailsBtn">View Details</button>
+        <p id="randomRecipeName"></p>
+        <button id="viewRandomDetailsBtn">View Details</button>
       </div>
     </div>
   </div>
