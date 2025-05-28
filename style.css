@@ -35,16 +35,20 @@ h1 {
 .controls {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 20px;
+  width: 100%;
 }
 
-input[type="text"] {
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+.controls input[type="text"] {
   width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 button {
