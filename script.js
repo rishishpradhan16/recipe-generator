@@ -5,25 +5,47 @@ const loader = document.getElementById('loader');
 const randomContainer = document.getElementById('randomRecipeContainer');
 const randomName = document.getElementById('randomRecipeName');
 const viewRandomBtn = document.getElementById('viewRandomDetailsBtn');
-const toggleFilter = document.getElementById('toggleFilter');
-const ingredientFilter = document.getElementById('ingredientFilter');
-const applyFilterBtn = document.getElementById('applyFilterBtn');
 
 const recipes = [
   {
-    name: "Omelette",
-    details: "Ingredients: Egg, Milk\n\nInstructions: Beat eggs with milk, cook in pan.",
-    ingredients: ["Egg", "Milk"]
+    name: "Spaghetti Carbonara",
+    ingredients: ["Pasta", "Egg", "Cheese", "Bacon"],
+    details: "Boil pasta, mix with scrambled eggs and cheese, add cooked bacon."
   },
   {
-    name: "Mango Smoothie",
-    details: "Ingredients: Mango, Milk\n\nInstructions: Blend ingredients till smooth.",
-    ingredients: ["Mango", "Milk"]
+    name: "Paneer Butter Masala",
+    ingredients: ["Paneer", "Butter", "Cream", "Tomato"],
+    details: "Cook tomato gravy, add paneer and cream, simmer in butter."
   },
   {
     name: "Grilled Cheese Sandwich",
-    details: "Ingredients: Bread, Cheese, Butter\n\nInstructions: Assemble sandwich and grill.",
-    ingredients: ["Bread", "Cheese", "Butter"]
+    ingredients: ["Bread", "Cheese", "Butter"],
+    details: "Butter bread, place cheese between slices, grill till golden brown."
+  },
+  {
+    name: "Veg Biryani",
+    ingredients: ["Rice", "Vegetables", "Spices"],
+    details: "Cook rice and vegetables separately, layer with spices, steam together."
+  },
+  {
+    name: "Mango Smoothie",
+    ingredients: ["Mango", "Yogurt", "Milk"],
+    details: "Blend all ingredients till smooth, serve chilled."
+  },
+  {
+    name: "Omelette",
+    ingredients: ["Egg", "Salt"],
+    details: "Beat eggs, cook on pan until fluffy."
+  },
+  {
+    name: "Fish Curry",
+    ingredients: ["Fish", "Tomato", "Spices"],
+    details: "Marinate fish, cook in tomato and spice gravy."
+  },
+  {
+    name: "Chicken Curry",
+    ingredients: ["Chicken", "Tomato", "Spices"],
+    details: "Cook chicken with tomatoes and spices until tender."
   }
 ];
 
@@ -36,8 +58,13 @@ searchInput.addEventListener('input', () => {
   displayRecipeList(filtered);
 });
 
+// Display list
 function displayRecipeList(filtered) {
   recipeList.innerHTML = '';
+  if (filtered.length === 0) {
+    recipeList.innerHTML = '<li>No recipes found.</li>';
+    return;
+  }
   filtered.forEach(recipe => {
     const li = document.createElement('li');
     li.textContent = recipe.name;
@@ -54,7 +81,6 @@ window.addEventListener('load', () => {
   displayRecipeList(recipes);
 });
 
-// Chef's Choice button
 randomBtn.addEventListener('click', () => {
   loader.classList.remove('hidden');
   randomContainer.classList.add('hidden');
@@ -68,23 +94,24 @@ randomBtn.addEventListener('click', () => {
       window.location.href = 'recipe.html';
     };
     randomContainer.classList.remove('hidden');
-  }, 2000);
+  }, 3000);
 });
 
-// Toggle ingredient filter visibility
-toggleFilter.addEventListener('click', () => {
-  ingredientFilter.classList.toggle('hidden');
-});
+function toggleIngredientFilter() {
+  const filterDiv = document.getElementById('ingredientFilter');
+  filterDiv.classList.toggle('hidden');
+}
 
-// Apply ingredient filter
-applyFilterBtn.addEventListener('click', () => {
-  const selectedIngredients = Array.from(
-    ingredientFilter.querySelectorAll('input[type="checkbox"]:checked')
-  ).map(cb => cb.value);
+function applyFilter() {
+  const selected = Array.from(document.querySelectorAll('#ingredientFilter input[type="checkbox"]:checked')).map(cb => cb.value);
+  if (selected.length === 0) {
+    displayRecipeList(recipes);
+    return;
+  }
 
-  const matched = recipes.filter(recipe =>
-    selectedIngredients.every(ing => recipe.ingredients.includes(ing))
+  const filtered = recipes.filter(recipe =>
+    selected.every(ing => recipe.ingredients.includes(ing))
   );
 
-  displayRecipeList(matched);
-});
+  displayRecipeList(filtered);
+}
