@@ -61,8 +61,10 @@ randomBtn.addEventListener('click', () => {
 });
 
 function toggleIngredientFilter() {
-  ingredientFilter.classList.toggle('hidden');
+  const filterSection = document.getElementById('ingredientFilter');
+  filterSection.classList.toggle('hidden');
 }
+
 
 function applyIngredientFilter() {
   const selected = Array.from(ingredientFilter.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
