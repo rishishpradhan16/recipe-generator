@@ -13,7 +13,6 @@
     <div class="controls">
       <input type="text" id="searchInput" placeholder="Search recipes..." />
       <button class="ingredient-toggle-btn" onclick="toggleIngredientFilter()">🧂 Filter by Ingredients</button>
-      
       <div id="ingredientFilter" class="hidden">
         <label><input type="checkbox" value="Egg"> Egg</label>
         <label><input type="checkbox" value="Milk"> Milk</label>
@@ -39,7 +38,7 @@
     <div class="random-section">
       <p class="subtext">Can’t decide? Here’s a surprise</p>
       <button id="randomBtn"><span id="loader" class="loader hidden"></span>🎲 Chef's Choice</button>
-      <div id="randomRecipeContainer" class="hidden" style="text-align:center;">
+      <div id="randomRecipeContainer" class="hidden">
         <p id="randomRecipeName"></p>
         <button id="viewRandomDetailsBtn">View Details</button>
       </div>
