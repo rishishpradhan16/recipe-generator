@@ -66,8 +66,16 @@ button:hover {
   background: #e65c00;
 }
 
+/* ✅ Consistent color for Filter by Ingredients */
 .ingredient-toggle-btn {
-  background-color: #6db3f2;
+  background-color: #6db3f2 !important;
+  color: white;
+  border: none;
+}
+
+/* ✅ Prevent hover color change */
+.ingredient-toggle-btn:hover {
+  background-color: #6db3f2 !important;
 }
 
 ul {
@@ -134,4 +142,10 @@ li {
 #ingredientFilter label {
   display: block;
   margin: 4px 0;
+}
+
+/* ✅ Center "View Details" CTA button */
+#viewRandomDetailsBtn {
+  display: inline-block;
+  margin: 10px auto 0 auto;
 }
