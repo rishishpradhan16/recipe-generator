@@ -1,75 +1,73 @@
+const searchInput = document.getElementById('searchInput');
+const recipeList = document.getElementById('recipeList');
+const randomBtn = document.getElementById('randomBtn');
+const loader = document.getElementById('loader');
+const randomContainer = document.getElementById('randomRecipeContainer');
+const randomName = document.getElementById('randomRecipeName');
+const viewRandomBtn = document.getElementById('viewRandomDetailsBtn');
+const ingredientFilter = document.getElementById('ingredientFilter');
+
 const recipes = [
-  { name: "Omelette", ingredients: ["Egg", "Milk"] },
-  { name: "Mango Smoothie", ingredients: ["Milk", "Mango"] },
-  { name: "Grilled Cheese Sandwich", ingredients: ["Bread", "Cheese", "Butter"] },
-  { name: "Chicken Curry", ingredients: ["Chicken", "Tomato", "Cream"] },
-  { name: "Fish Fry", ingredients: ["Fish"] },
-  { name: "Veg Pulao", ingredients: ["Rice", "Vegetables"] },
-  { name: "Paneer Butter Masala", ingredients: ["Paneer", "Butter", "Tomato", "Cream"] },
-  { name: "Bacon Pasta", ingredients: ["Pasta", "Bacon", "Cream"] },
-  { name: "Spaghetti", ingredients: ["Pasta", "Tomato", "Cheese"] }
+  { name: "Spaghetti Carbonara", ingredients: ["Pasta", "Egg", "Cheese", "Bacon"], details: "Ingredients: Pasta, Egg, Cheese, Bacon.\n\nInstructions: Boil pasta, mix with scrambled eggs and cheese, add cooked bacon." },
+  { name: "Paneer Butter Masala", ingredients: ["Paneer", "Butter", "Cream", "Tomato"], details: "Ingredients: Paneer, Butter, Cream, Tomato.\n\nInstructions: Cook tomato gravy, add paneer and cream, simmer in butter." },
+  { name: "Grilled Cheese Sandwich", ingredients: ["Bread", "Cheese", "Butter"], details: "Ingredients: Bread, Cheese, Butter.\n\nInstructions: Butter bread, place cheese between slices, grill till golden brown." },
+  { name: "Veg Biryani", ingredients: ["Rice", "Vegetables", "Spices"], details: "Ingredients: Rice, Vegetables, Spices.\n\nInstructions: Cook rice and vegetables separately, layer with spices, steam together." },
+  { name: "Mango Smoothie", ingredients: ["Mango", "Milk"], details: "Ingredients: Mango, Milk.\n\nInstructions: Blend all ingredients till smooth, serve chilled." },
+  { name: "Omelette", ingredients: ["Egg", "Milk"], details: "Ingredients: Egg, Milk.\n\nInstructions: Beat eggs with milk, cook on pan till fluffy." },
+  { name: "Fried Fish", ingredients: ["Fish", "Spices"], details: "Ingredients: Fish, Spices.\n\nInstructions: Marinate fish in spices, shallow fry until crispy." },
+  { name: "Chicken Curry", ingredients: ["Chicken", "Tomato", "Spices"], details: "Ingredients: Chicken, Tomato, Spices.\n\nInstructions: Cook chicken in spicy tomato gravy until tender." }
 ];
 
-function renderRecipes(list) {
-  const ul = document.getElementById("recipeList");
-  ul.innerHTML = "";
-
+function displayRecipeList(list) {
+  recipeList.innerHTML = '';
   if (list.length === 0) {
-    ul.innerHTML = "<li>No recipes found.</li>";
+    recipeList.innerHTML = '<li>No recipes found.</li>';
     return;
   }
-
   list.forEach(recipe => {
-    const li = document.createElement("li");
+    const li = document.createElement('li');
     li.textContent = recipe.name;
-    ul.appendChild(li);
+    li.addEventListener('click', () => {
+      sessionStorage.setItem('selectedRecipe', JSON.stringify(recipe));
+      window.location.href = 'recipe.html';
+    });
+    recipeList.appendChild(li);
   });
 }
 
-function filterRecipes(keyword) {
-  const filtered = recipes.filter(recipe =>
-    recipe.name.toLowerCase().includes(keyword.toLowerCase())
-  );
-  renderRecipes(filtered);
-}
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase();
+  const filtered = recipes.filter(recipe => recipe.name.toLowerCase().includes(query));
+  displayRecipeList(filtered);
+});
 
-document.getElementById("searchInput").addEventListener("input", (e) => {
-  filterRecipes(e.target.value);
+window.addEventListener('load', () => {
+  displayRecipeList(recipes);
+});
+
+randomBtn.addEventListener('click', () => {
+  loader.classList.remove('hidden');
+  randomContainer.classList.add('hidden');
+  setTimeout(() => {
+    loader.classList.add('hidden');
+    const random = recipes[Math.floor(Math.random() * recipes.length)];
+    randomName.textContent = random.name;
+    viewRandomBtn.onclick = () => {
+      sessionStorage.setItem('selectedRecipe', JSON.stringify(random));
+      window.location.href = 'recipe.html';
+    };
+    randomContainer.classList.remove('hidden');
+  }, 3000);
 });
 
 function toggleIngredientFilter() {
-  const filter = document.getElementById("ingredientFilter");
-  filter.classList.toggle("hidden");
+  ingredientFilter.classList.toggle('hidden');
 }
 
 function applyIngredientFilter() {
-  const checkboxes = document.querySelectorAll('#ingredientFilter input[type="checkbox"]:checked');
-  const selected = Array.from(checkboxes).map(cb => cb.value);
-
-  const filtered = recipes.filter(recipe =>
-    selected.every(ingredient => recipe.ingredients.includes(ingredient))
+  const selected = Array.from(ingredientFilter.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+  const matched = recipes.filter(recipe =>
+    selected.every(ing => recipe.ingredients.includes(ing))
   );
-
-  renderRecipes(filtered);
+  displayRecipeList(matched);
 }
-
-document.getElementById("randomBtn").addEventListener("click", () => {
-  const loader = document.getElementById("loader");
-  const container = document.getElementById("randomRecipeContainer");
-  const name = document.getElementById("randomRecipeName");
-  const btn = document.getElementById("viewRandomDetailsBtn");
-
-  loader.classList.remove("hidden");
-  container.classList.add("hidden");
-
-  setTimeout(() => {
-    loader.classList.add("hidden");
-    const recipe = recipes[Math.floor(Math.random() * recipes.length)];
-    name.textContent = recipe.name;
-    container.classList.remove("hidden");
-
-    btn.onclick = () => {
-      window.location.href = `recipe.html?name=${encodeURIComponent(recipe.name)}`;
-    };
-  }, 1000);
-});
