@@ -110,18 +110,19 @@ li {
 }
 
 .random-recipe-container {
-  margin-top: 20px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .random-recipe-name {
   margin-bottom: 10px;
-  font-weight: bold;
   font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .random-view-btn-wrapper {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 
