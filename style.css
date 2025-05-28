@@ -109,15 +109,21 @@ li {
   justify-content: center;
 }
 
-#randomRecipeContainer > *:not(:last-child) {
-  margin-bottom: 8px;
+.random-recipe-container {
+  margin-top: 20px;
+  text-align: center;
 }
 
-#randomRecipeName {
+.random-recipe-name {
   margin-bottom: 10px;
   font-weight: bold;
   font-size: 1.1rem;
 }
+
+.random-view-btn-wrapper {
+  text-align: center;
+}
+
 
 .loader {
   width: 14px;
