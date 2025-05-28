@@ -42,13 +42,13 @@ h1 {
 }
 
 .controls input[type="text"] {
-  width: 100%;
-  max-width: 300px;
+  width: 90%;
+  max-width: 500px;
   padding: 10px;
   font-size: 1rem;
-  box-sizing: border-box;
   border-radius: 5px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 button {
